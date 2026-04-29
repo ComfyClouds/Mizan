@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Book an Appointment — Al Mizan Law Firm</title>
+  <link rel="stylesheet" href="css/main.css"/>
+  <link rel="stylesheet" href="css/appointments.css"/>
+</head>
+<body>
+<div class="page-wrap">
+
+  <div class="page-hero">
+    <div class="page-hero-content">
+      <div class="breadcrumb">
+        <a href="index.html" data-i18n="bc_home">Home</a>
+        <span class="breadcrumb-sep">›</span>
+        <span data-i18n="bc_appointments">Book Appointment</span>
+      </div>
+      <h1 class="page-hero-title" data-i18n="appt_hero_title">Book a Consultation</h1>
+      <p class="page-hero-sub" data-i18n="appt_hero_sub">Select a date and time — your slot is confirmed after our team reviews your request.</p>
+    </div>
+  </div>
+
+  <section class="section">
+    <div class="container">
+      <div class="appt-layout">
+
+        <div class="appt-form-col">
+          <div class="steps-bar">
+            <div class="step active" id="step1Ind"><span>01</span> <span data-i18n="step1_label">Select Time</span></div>
+            <div class="step-line"></div>
+            <div class="step" id="step2Ind"><span>02</span> <span data-i18n="step2_label">Your Details</span></div>
+            <div class="step-line"></div>
+            <div class="step" id="step3Ind"><span>03</span> <span data-i18n="step3_label">Review & Confirm</span></div>
+          </div>
+
+          <!-- Step 1 -->
+          <div id="stepPanel1" class="step-panel">
+            <div class="appt-block">
+              <h3 class="appt-block-title" data-i18n="appt_choose_date">Choose a Date</h3>
+              <div class="form-group">
+                <label class="form-label" data-i18n="appt_date_lbl">Appointment Date</label>
+                <input type="date" id="apptDate" class="form-control" min=""/>
+              </div>
+            </div>
+            <div class="appt-block" id="slotsBlock" style="display:none;">
+              <h3 class="appt-block-title" data-i18n="appt_slots_title">Available Time Slots</h3>
+              <div id="slotsContainer"><div class="spinner"></div></div>
+            </div>
+            <div id="noSlotsMsg" class="alert alert-info" style="display:none;" data-i18n="appt_no_slots">No available slots for this date. Please select another day.</div>
+            <button class="btn btn-gold" id="step1Next" disabled style="margin-top:20px;" data-i18n="step1_next">Continue to Details →</button>
+          </div>
+
+          <!-- Step 2 -->
+          <div id="stepPanel2" class="step-panel" style="display:none;">
+            <div class="appt-block">
+              <h3 class="appt-block-title" data-i18n="appt_info_title">Your Information</h3>
+              <div class="form-grid-2">
+                <div class="form-group">
+                  <label class="form-label" data-i18n="lbl_fullname">Full Name *</label>
+                  <input type="text" id="apptName" class="form-control" data-i18n-placeholder="ph_name" placeholder="Ahmed Mohamed" required/>
+                </div>
+                <div class="form-group">
+                  <label class="form-label" data-i18n="lbl_phone">Phone Number *</label>
+                  <input type="tel" id="apptPhone" class="form-control" data-i18n-placeholder="ph_phone" placeholder="+20 100 000 0000" required/>
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="form-label" data-i18n="lbl_email">Email Address *</label>
+                <input type="email" id="apptEmail" class="form-control" data-i18n-placeholder="ph_email" placeholder="you@example.com" required/>
+              </div>
+              <div class="form-group">
+                <label class="form-label" data-i18n="lbl_service">Legal Service Required *</label>
+                <select id="apptService" class="form-control" required>
+                  <option value="" disabled selected data-i18n="svc_placeholder">— Select a service —</option>
+                  <option data-i18n="svc_opt1">Legal Consultation</option>
+                  <option data-i18n="svc_opt2">Contract Review</option>
+                  <option data-i18n="svc_opt3">Corporate Law</option>
+                  <option data-i18n="svc_opt4">Civil Litigation</option>
+                  <option data-i18n="svc_opt5">Family Law</option>
+                  <option data-i18n="svc_opt6">Real Estate Law</option>
+                  <option data-i18n="svc_opt7">Labor & Employment</option>
+                  <option data-i18n="svc_opt8">Criminal Defense</option>
+                  <option data-i18n="svc_opt9">Other</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label class="form-label" data-i18n="lbl_notes">Brief Description (optional)</label>
+                <textarea id="apptNotes" class="form-control" data-i18n-placeholder="ph_notes" placeholder="Describe your situation briefly…" rows="4"></textarea>
+              </div>
+            </div>
+            <div style="display:flex;gap:12px;margin-top:8px;">
+              <button class="btn btn-outline" id="step2Back" data-i18n="step2_back">← Back</button>
+              <button class="btn btn-gold" id="step2Next" data-i18n="step2_next">Review Appointment →</button>
+            </div>
+          </div>
+
+          <!-- Step 3 -->
+          <div id="stepPanel3" class="step-panel" style="display:none;">
+            <div class="appt-block">
+              <h3 class="appt-block-title" data-i18n="appt_review_title">Review Your Appointment</h3>
+              <div id="reviewBlock" class="review-grid"></div>
+              <div class="alert alert-info" style="margin-top:20px;" data-i18n-html="appt_review_warn">
+                ⚠ Your appointment request will be reviewed by our team. You will be contacted once it is <strong>confirmed</strong>.
+              </div>
+            </div>
+            <div id="formAlert"></div>
+            <div style="display:flex;gap:12px;margin-top:8px;">
+              <button class="btn btn-outline" id="step3Back" data-i18n="step3_back">← Edit Details</button>
+              <button class="btn btn-red" id="submitAppt" data-i18n="step3_submit">✓ Submit Request</button>
+            </div>
+          </div>
+        </div>
+
+        <aside class="appt-sidebar">
+          <div class="sidebar-box">
+            <div class="sidebar-box-title" data-i18n="sidebar_info">Consultation Info</div>
+            <div class="sidebar-detail-item">
+              <span data-i18n="sidebar_duration">Duration</span>
+              <strong data-i18n="sidebar_dur_val">45–60 min</strong>
+            </div>
+            <div class="sidebar-detail-item">
+              <span data-i18n="sidebar_type">Type</span>
+              <strong data-i18n="sidebar_type_val">In-person / Phone</strong>
+            </div>
+            <div class="sidebar-detail-item">
+              <span data-i18n="sidebar_hours">Working Hours</span>
+              <strong data-i18n="sidebar_hours_val">Sun–Thu, 9AM–5PM</strong>
+            </div>
+            <div class="divider"><div class="divider-diamond"></div></div>
+            <p class="sidebar-note" data-i18n-html="sidebar_note">All consultations are <strong>strictly confidential</strong>.</p>
+          </div>
+          <div class="sidebar-box sidebar-box-contact">
+            <div class="sidebar-box-title" data-i18n="sidebar_urgent">Need Urgent Help?</div>
+            <p style="font-size:0.85rem;color:var(--muted);margin-bottom:12px;" data-i18n="sidebar_call_desc">Call us directly:</p>
+            <a href="tel:+20100000000" class="btn btn-gold" style="width:100%;justify-content:center;" data-i18n="call_now">📞 Call Now</a>
+          </div>
+        </aside>
+
+      </div>
+    </div>
+  </section>
+
+</div>
+<script src="js/config.js"></script>
+<script src="js/main.js"></script>
+<script src="js/i18n.js"></script>
+<script src="js/appointments.js"></script>
+</body>
+</html>

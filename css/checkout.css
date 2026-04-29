@@ -1,0 +1,124 @@
+/* ============================================================
+   Al Mizan — Checkout Pages (checkout.css)
+   ============================================================ */
+
+.checkout-layout {
+  display: grid;
+  grid-template-columns: 1fr 320px;
+  gap: 40px;
+  align-items: flex-start;
+}
+
+.checkout-form-col { display: flex; flex-direction: column; gap: 0; }
+
+/* ── Payment Detail Row ───────────────────────────────────── */
+.payment-block { background: rgba(201,168,76,0.04); border-color: var(--gold-border); }
+
+.payment-detail {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 0;
+  font-size: 0.88rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.payment-detail:last-child { border-bottom: none; }
+.payment-detail span { color: var(--muted); }
+.payment-detail strong { color: var(--gold-light); font-weight: 600; }
+
+/* ── Order Summary ────────────────────────────────────────── */
+.order-summary { position: sticky; top: calc(var(--nav-h) + 20px); }
+
+.summary-img {
+  width: 100%;
+  height: 140px;
+  object-fit: cover;
+  border-radius: var(--radius);
+  margin-bottom: 16px;
+  background: var(--dark-3);
+}
+
+.summary-img-placeholder {
+  width: 100%;
+  height: 140px;
+  background: linear-gradient(135deg, var(--dark-3), var(--dark-4));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2.5rem;
+  border-radius: var(--radius);
+  margin-bottom: 16px;
+}
+
+.summary-title {
+  font-family: var(--font-display);
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--gold-light);
+  margin-bottom: 8px;
+  letter-spacing: 0.02em;
+}
+
+.summary-cat {
+  font-size: 0.72rem;
+  color: var(--muted);
+  margin-bottom: 12px;
+}
+
+.summary-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 8px 0;
+  font-size: 0.85rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.summary-row:last-child { border-bottom: none; }
+.summary-row span { color: var(--muted); }
+.summary-row strong { color: var(--text); }
+
+.summary-total {
+  display: flex;
+  justify-content: space-between;
+  padding: 14px 0 0;
+  margin-top: 4px;
+  border-top: 2px solid var(--gold-border);
+  font-family: var(--font-display);
+}
+
+.summary-total span {
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+
+.summary-total strong {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--gold);
+}
+
+/* ── Review rows (reused from appointments) ───────────────── */
+.review-grid { display: flex; flex-direction: column; }
+
+.review-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--border);
+  font-size: 0.9rem;
+}
+
+.review-row:last-child { border-bottom: none; }
+.review-label { color: var(--muted); font-size: 0.78rem; font-family: var(--font-display); letter-spacing: 0.08em; text-transform: uppercase; }
+.review-value { color: var(--gold-light); font-weight: 600; text-align: right; }
+
+/* ── Responsive ───────────────────────────────────────────── */
+@media (max-width: 900px) {
+  .checkout-layout { grid-template-columns: 1fr; }
+  .order-summary { position: static; order: -1; }
+}

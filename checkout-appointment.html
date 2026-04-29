@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Appointment Review — Al Mizan Law Firm</title>
+  <link rel="stylesheet" href="css/main.css"/>
+  <link rel="stylesheet" href="css/checkout.css"/>
+</head>
+<body>
+
+<div class="page-wrap">
+
+  <div class="page-hero">
+    <div class="page-hero-content">
+      <div class="breadcrumb">
+        <a href="index.html">Home</a>
+        <span class="breadcrumb-sep">›</span>
+        <a href="appointments.html">Appointments</a>
+        <span class="breadcrumb-sep">›</span>
+        <span>Review</span>
+      </div>
+      <h1 class="page-hero-title">Review Appointment</h1>
+      <p class="page-hero-sub">Confirm your consultation details before submitting.</p>
+    </div>
+  </div>
+
+  <section class="section">
+    <div class="container" style="max-width:720px;">
+
+      <div id="noApptAlert" class="alert alert-error" style="display:none;">
+        No appointment data found. <a href="appointments.html">Book an appointment →</a>
+      </div>
+
+      <div id="apptReviewWrap" style="display:none;">
+        <div class="appt-block" style="margin-bottom:20px;">
+          <h3 class="appt-block-title">Appointment Details</h3>
+          <div id="apptReviewRows" class="review-grid"></div>
+        </div>
+
+        <div class="alert alert-info">
+          ⚠ Your appointment is <strong>not confirmed</strong> until our team reviews and accepts it. You will be contacted via the details provided.
+        </div>
+
+        <div id="checkoutAlert" style="margin-top:16px;"></div>
+
+        <div style="display:flex;gap:12px;margin-top:24px;">
+          <a href="appointments.html" class="btn btn-outline">← Edit</a>
+          <button class="btn btn-red" id="submitApptFinal">✓ Submit Appointment Request</button>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+</div>
+
+<script src="js/config.js"></script>
+<script src="js/main.js"></script>
+<script src="js/checkout.js"></script>
+</body>
+</html>

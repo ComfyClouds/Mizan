@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Course Checkout — Al Mizan Law Firm</title>
+  <link rel="stylesheet" href="css/main.css"/>
+  <link rel="stylesheet" href="css/checkout.css"/>
+</head>
+<body>
+<div class="page-wrap">
+  <div class="page-hero">
+    <div class="page-hero-content">
+      <div class="breadcrumb">
+        <a href="index.html" data-i18n="bc_home">Home</a><span class="breadcrumb-sep">›</span>
+        <a href="courses.html" data-i18n="bc_courses">Courses</a><span class="breadcrumb-sep">›</span>
+        <span data-i18n="bc_checkout">Checkout</span>
+      </div>
+      <h1 class="page-hero-title" data-i18n="co_hero_title">Course Checkout</h1>
+      <p class="page-hero-sub" data-i18n="co_hero_sub">Complete your enrollment below.</p>
+    </div>
+  </div>
+  <section class="section">
+    <div class="container">
+      <div id="noCourseAlert" class="alert alert-error" style="display:none;">
+        No course selected. <a href="courses.html" data-i18n="bc_courses">Browse courses →</a>
+      </div>
+      <div id="checkoutWrap" class="checkout-layout" style="display:none;">
+        <div class="checkout-form-col">
+          <div class="appt-block">
+            <h3 class="appt-block-title" data-i18n="co_details_title">Your Details</h3>
+            <div class="form-grid-2">
+              <div class="form-group">
+                <label class="form-label" data-i18n="lbl_fullname">Full Name *</label>
+                <input type="text" id="coName" class="form-control" data-i18n-placeholder="ph_name" placeholder="Ahmed Mohamed" required/>
+              </div>
+              <div class="form-group">
+                <label class="form-label" data-i18n="lbl_phone">Phone Number *</label>
+                <input type="tel" id="coPhone" class="form-control" data-i18n-placeholder="ph_phone" placeholder="+20 100 000 0000" required/>
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="form-label" data-i18n="lbl_email">Email Address *</label>
+              <input type="email" id="coEmail" class="form-control" data-i18n-placeholder="ph_email" placeholder="you@example.com" required/>
+            </div>
+            <div class="form-group">
+              <label class="form-label" data-i18n="co_notes_lbl">Additional Notes (optional)</label>
+              <textarea id="coNotes" class="form-control" rows="3" data-i18n-placeholder="ph_co_notes" placeholder="Any questions or special requests…"></textarea>
+            </div>
+          </div>
+          <div class="appt-block payment-block">
+            <h3 class="appt-block-title" data-i18n="co_payment_title">Payment Instructions</h3>
+            <div class="alert alert-info" style="margin-bottom:16px;" data-i18n="co_payment_warn">Please transfer the course fee to the account below, then submit this form.</div>
+            <div class="payment-detail"><span data-i18n="pay_bank">Bank</span><strong id="piBank"></strong></div>
+            <div class="payment-detail"><span data-i18n="pay_acct_name">Account Name</span><strong id="piName"></strong></div>
+            <div class="payment-detail"><span data-i18n="pay_acct_num">Account Number</span><strong id="piAccNum"></strong></div>
+            <div class="payment-detail"><span data-i18n="pay_iban">IBAN</span><strong id="piIban"></strong></div>
+          </div>
+          <div id="checkoutAlert"></div>
+          <button class="btn btn-red" id="submitCourse" style="margin-top:8px;" data-i18n="co_submit">✓ Confirm Enrollment</button>
+        </div>
+        <aside class="checkout-sidebar">
+          <div class="appt-block order-summary">
+            <h3 class="appt-block-title" data-i18n="co_order_title">Order Summary</h3>
+            <div id="courseSummary"></div>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </section>
+</div>
+<script src="js/config.js"></script>
+<script src="js/main.js"></script>
+<script src="js/i18n.js"></script>
+<script src="js/checkout.js"></script>
+</body>
+</html>

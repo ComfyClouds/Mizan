@@ -1,0 +1,224 @@
+/* ============================================================
+   Al Mizan — Appointments Page (appointments.css)
+   ============================================================ */
+
+/* ── Layout ───────────────────────────────────────────────── */
+.appt-layout {
+  display: grid;
+  grid-template-columns: 1fr 320px;
+  gap: 40px;
+  align-items: flex-start;
+}
+
+/* ── Steps Bar ────────────────────────────────────────────── */
+.steps-bar {
+  display: flex;
+  align-items: center;
+  margin-bottom: 36px;
+  gap: 0;
+}
+
+.step {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-display);
+  font-size: 0.62rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+  transition: color var(--transition);
+  white-space: nowrap;
+}
+
+.step span {
+  width: 28px; height: 28px;
+  border: 1px solid var(--border);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 0.6rem;
+  transition: all var(--transition);
+  flex-shrink: 0;
+}
+
+.step.active { color: var(--gold); }
+.step.active span {
+  background: var(--gold);
+  color: var(--black);
+  border-color: var(--gold);
+}
+
+.step.completed { color: var(--gold-dark); }
+.step.completed span {
+  background: transparent;
+  color: var(--gold-dark);
+  border-color: var(--gold-dark);
+}
+
+.step-line {
+  flex: 1;
+  height: 1px;
+  background: var(--border);
+  margin: 0 12px;
+  min-width: 20px;
+}
+
+/* ── Block ────────────────────────────────────────────────── */
+.appt-block {
+  background: var(--dark-2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 28px;
+  margin-bottom: 20px;
+}
+
+.appt-block-title {
+  font-family: var(--font-display);
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 20px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--border);
+}
+
+/* ── Date Input ───────────────────────────────────────────── */
+input[type="date"].form-control {
+  cursor: pointer;
+  color-scheme: dark;
+}
+
+/* ── Time Slots ───────────────────────────────────────────── */
+.slots-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+
+.slot-btn {
+  background: var(--dark-3);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  color: var(--text);
+  font-family: var(--font-display);
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  padding: 12px 8px;
+  cursor: pointer;
+  transition: all var(--transition);
+  text-align: center;
+}
+
+.slot-btn:hover {
+  border-color: var(--gold);
+  color: var(--gold);
+  background: var(--gold-dim);
+}
+
+.slot-btn.selected {
+  background: var(--gold);
+  border-color: var(--gold);
+  color: var(--black);
+  font-weight: 700;
+}
+
+/* ── Form Grid ────────────────────────────────────────────── */
+.form-grid-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+/* ── Review Grid ──────────────────────────────────────────── */
+.review-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.review-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--border);
+  font-size: 0.9rem;
+}
+
+.review-row:last-child { border-bottom: none; }
+
+.review-label {
+  color: var(--muted);
+  font-size: 0.78rem;
+  font-family: var(--font-display);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.review-value {
+  color: var(--gold-light);
+  font-weight: 600;
+  text-align: right;
+}
+
+/* ── Sidebar ──────────────────────────────────────────────── */
+.appt-sidebar { display: flex; flex-direction: column; gap: 20px; }
+
+.sidebar-box {
+  background: var(--dark-2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 24px;
+}
+
+.sidebar-box-title {
+  font-family: var(--font-display);
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 18px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--border);
+}
+
+.sidebar-detail-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 0;
+  font-size: 0.85rem;
+  border-bottom: 1px solid rgba(201,168,76,0.08);
+}
+
+.sidebar-detail-item:last-of-type { border-bottom: none; }
+
+.sidebar-detail-item span { color: var(--muted); }
+.sidebar-detail-item strong { color: var(--text); }
+
+.sidebar-note {
+  font-size: 0.82rem;
+  color: var(--muted);
+  line-height: 1.6;
+  margin-bottom: 0;
+}
+
+.sidebar-box-contact { border-color: var(--red); }
+
+/* ── Responsive ───────────────────────────────────────────── */
+@media (max-width: 900px) {
+  .appt-layout { grid-template-columns: 1fr; }
+  .appt-sidebar { order: -1; }
+}
+
+@media (max-width: 500px) {
+  .form-grid-2 { grid-template-columns: 1fr; }
+  .slots-grid  { grid-template-columns: repeat(2, 1fr); }
+  .steps-bar .step { font-size: 0; }
+  .steps-bar .step span { font-size: 0.65rem; }
+}

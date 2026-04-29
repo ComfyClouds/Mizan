@@ -1,0 +1,323 @@
+/* ============================================================
+   Al Mizan — RTL Stylesheet (rtl.css)
+   Loaded globally; rules apply only when body.rtl is present
+   ============================================================ */
+
+/* ── Base Direction ───────────────────────────────────────── */
+body.rtl {
+  font-family: 'Cairo', 'Tajawal', var(--font-body), sans-serif;
+  text-align: right;
+}
+
+/* Import Arabic Google Fonts */
+body.rtl * {
+  font-family: inherit;
+}
+
+/* When Arabic, prefer Cairo for headings */
+body.rtl h1, body.rtl h2, body.rtl h3,
+body.rtl h4, body.rtl h5, body.rtl h6,
+body.rtl .section-tag, body.rtl .footer-heading,
+body.rtl .appt-block-title, body.rtl .sidebar-box-title,
+body.rtl .filter-btn, body.rtl .btn,
+body.rtl .nav-links a, body.rtl .step,
+body.rtl .review-label, body.rtl .form-label,
+body.rtl .course-cat, body.rtl .course-enroll-btn {
+  font-family: 'Cairo', 'Tajawal', sans-serif;
+  letter-spacing: 0 !important;
+}
+
+/* ── Navbar ───────────────────────────────────────────────── */
+body.rtl .navbar {
+  flex-direction: row-reverse;
+}
+
+body.rtl .nav-logo {
+  flex-direction: row-reverse;
+}
+
+body.rtl .nav-logo-text {
+  text-align: right;
+}
+
+body.rtl .nav-links {
+  flex-direction: row-reverse;
+}
+
+body.rtl .nav-links a::after {
+  right: 0;
+  left: auto;
+}
+
+/* Mobile nav RTL */
+@media (max-width: 768px) {
+  body.rtl .nav-links {
+    flex-direction: column;
+  }
+}
+
+/* ── Footer ───────────────────────────────────────────────── */
+body.rtl .footer-grid {
+  direction: rtl;
+}
+
+body.rtl .footer-brand-ar {
+  direction: ltr;
+  text-align: right;
+}
+
+body.rtl .footer-contact-item {
+  flex-direction: row-reverse;
+}
+
+body.rtl .footer-bottom {
+  flex-direction: row-reverse;
+}
+
+body.rtl .footer-bottom-links {
+  flex-direction: row-reverse;
+}
+
+body.rtl .footer-social {
+  flex-direction: row-reverse;
+}
+
+/* ── Breadcrumb ───────────────────────────────────────────── */
+body.rtl .breadcrumb {
+  flex-direction: row-reverse;
+}
+
+/* ── Sections ─────────────────────────────────────────────── */
+body.rtl .section-sub {
+  text-align: right;
+}
+
+body.rtl .divider {
+  flex-direction: row;
+}
+
+/* ── Buttons ──────────────────────────────────────────────── */
+body.rtl .btn {
+  flex-direction: row-reverse;
+}
+
+/* ── Forms ────────────────────────────────────────────────── */
+body.rtl .form-label {
+  text-align: right;
+  display: block;
+}
+
+body.rtl .form-control {
+  text-align: right;
+  direction: rtl;
+}
+
+body.rtl .form-control option {
+  direction: rtl;
+}
+
+body.rtl select.form-control {
+  background-position: left 12px center;
+  padding-left: 36px;
+  padding-right: 16px;
+}
+
+/* ── Alert ────────────────────────────────────────────────── */
+body.rtl .alert {
+  border-left: none;
+  border-right: 3px solid;
+  text-align: right;
+  direction: rtl;
+}
+
+body.rtl .alert-success { border-right-color: #4CAF50; }
+body.rtl .alert-error   { border-right-color: var(--red); }
+body.rtl .alert-info    { border-right-color: var(--gold); }
+
+/* ── Service Cards ────────────────────────────────────────── */
+body.rtl .service-card {
+  text-align: right;
+}
+
+body.rtl .service-card::before {
+  left: auto;
+  right: 0;
+}
+
+/* ── Why Section ──────────────────────────────────────────── */
+body.rtl .why-wrap {
+  direction: rtl;
+}
+
+body.rtl .why-item {
+  flex-direction: row-reverse;
+}
+
+body.rtl .why-badge-wrap {
+  right: auto;
+  left: -20px;
+}
+
+/* ── Hero ─────────────────────────────────────────────────── */
+body.rtl .hero-actions {
+  flex-direction: row-reverse;
+}
+
+body.rtl .hero-stats {
+  flex-direction: row-reverse;
+}
+
+/* ── Steps Bar ────────────────────────────────────────────── */
+body.rtl .steps-bar {
+  flex-direction: row-reverse;
+}
+
+/* ── Appointments Layout ──────────────────────────────────── */
+body.rtl .appt-layout {
+  direction: rtl;
+}
+
+body.rtl .review-row {
+  flex-direction: row-reverse;
+  direction: rtl;
+}
+
+body.rtl .review-value {
+  text-align: left;
+}
+
+/* ── Sidebar ──────────────────────────────────────────────── */
+body.rtl .sidebar-detail-item {
+  flex-direction: row-reverse;
+}
+
+body.rtl .footer-contact-icon {
+  /* icon stays on the right in RTL */
+}
+
+/* ── Checkout ─────────────────────────────────────────────── */
+body.rtl .checkout-layout {
+  direction: rtl;
+}
+
+body.rtl .payment-detail {
+  flex-direction: row-reverse;
+}
+
+body.rtl .summary-total {
+  flex-direction: row-reverse;
+}
+
+body.rtl .summary-row {
+  flex-direction: row-reverse;
+}
+
+/* ── Courses ──────────────────────────────────────────────── */
+body.rtl .course-body {
+  text-align: right;
+}
+
+body.rtl .course-meta {
+  flex-direction: row-reverse;
+}
+
+body.rtl .course-footer {
+  flex-direction: row-reverse;
+}
+
+/* ── About ────────────────────────────────────────────────── */
+body.rtl .about-intro {
+  direction: rtl;
+}
+
+body.rtl .about-intro-stats {
+  direction: rtl;
+}
+
+body.rtl .values-grid {
+  direction: rtl;
+}
+
+body.rtl .value-card {
+  text-align: right;
+}
+
+body.rtl .team-grid {
+  direction: rtl;
+}
+
+body.rtl .team-card {
+  text-align: right;
+}
+
+/* ── Contact ──────────────────────────────────────────────── */
+body.rtl .contact-layout {
+  direction: rtl;
+}
+
+body.rtl .contact-info {
+  direction: rtl;
+}
+
+/* ── Page Hero ────────────────────────────────────────────── */
+body.rtl .page-hero-title,
+body.rtl .page-hero-sub {
+  font-family: 'Cairo', sans-serif;
+}
+
+/* ── Thank You ────────────────────────────────────────────── */
+body.rtl .ty-card {
+  direction: rtl;
+}
+
+body.rtl .ty-detail-row {
+  flex-direction: row-reverse;
+}
+
+body.rtl .ty-actions {
+  flex-direction: row-reverse;
+}
+
+/* ── Legal Pages ──────────────────────────────────────────── */
+body.rtl .legal-content {
+  direction: rtl;
+  text-align: right;
+}
+
+body.rtl .legal-content ul {
+  padding-right: 20px;
+  padding-left: 0;
+  margin-right: 0;
+  margin-left: 0;
+}
+
+/* ── Grid direction resets ────────────────────────────────── */
+body.rtl .footer-grid,
+body.rtl .services-grid,
+body.rtl .courses-grid,
+body.rtl .form-grid-2,
+body.rtl .hero-actions,
+body.rtl .courses-cta-wrap,
+body.rtl .courses-filter-bar {
+  direction: rtl;
+}
+
+/* ── Why card text ────────────────────────────────────────── */
+body.rtl .why-card-big {
+  text-align: right;
+  direction: rtl;
+}
+
+body.rtl .why-card-big p {
+  text-align: right;
+}
+
+/* ── Number display — keep LTR for Arabic numerals ─────────── */
+body.rtl .hero-stat-num,
+body.rtl .stat-num,
+body.rtl .why-badge-num,
+body.rtl .course-price,
+body.rtl .summary-total strong {
+  direction: ltr;
+  unicode-bidi: isolate;
+}

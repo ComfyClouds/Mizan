@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Thank You — Al Mizan Law Firm</title>
+  <link rel="stylesheet" href="css/main.css"/>
+  <style>
+    .ty-section {
+      min-height: calc(100vh - var(--nav-h));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 60px 5%;
+      text-align: center;
+    }
+    .ty-card {
+      background: var(--dark-2);
+      border: 1px solid var(--gold-border);
+      border-radius: var(--radius);
+      padding: 60px 50px;
+      max-width: 640px;
+      width: 100%;
+      position: relative;
+      overflow: hidden;
+      animation: tyFadeIn 0.8s ease both;
+    }
+    .ty-card::before {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--red), var(--gold), var(--red));
+    }
+    @keyframes tyFadeIn {
+      from { opacity:0; transform:translateY(24px); }
+      to   { opacity:1; transform:translateY(0); }
+    }
+    .ty-icon   { font-size: 3.5rem; margin-bottom: 20px; display: block; }
+    .ty-title  { font-size: clamp(1.8rem, 4vw, 2.6rem); margin-bottom: 12px; }
+    .ty-sub    { font-family: var(--font-serif); font-style: italic; color: var(--muted); font-size: 1rem; margin-bottom: 30px; line-height: 1.7; }
+    .ty-detail-box { background: var(--dark-3); border: 1px solid var(--border); border-radius: var(--radius); padding: 20px 24px; margin-bottom: 30px; text-align: left; }
+    .ty-detail-row { display: flex; justify-content: space-between; padding: 8px 0; border-bottom: 1px solid var(--border); font-size: 0.88rem; }
+    .ty-detail-row:last-child { border-bottom: none; }
+    .ty-detail-row span { color: var(--muted); }
+    .ty-detail-row strong { color: var(--gold-light); }
+    .ty-actions { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+    .ty-note    { margin-top: 24px; font-size: 0.8rem; color: var(--muted); line-height: 1.6; }
+    body.rtl .ty-card    { direction: rtl; }
+    body.rtl .ty-detail-box { text-align: right; }
+    body.rtl .ty-detail-row { flex-direction: row-reverse; }
+    body.rtl .ty-actions { flex-direction: row-reverse; }
+  </style>
+</head>
+<body>
+<div class="page-wrap">
+  <section class="ty-section">
+    <div class="ty-card">
+      <span class="ty-icon" id="tyIcon">✅</span>
+      <h1 class="ty-title" id="tyTitle">Thank You!</h1>
+      <p class="ty-sub"  id="tySub">Your request has been received. Our team will be in touch shortly.</p>
+      <div class="ty-detail-box" id="tyDetailBox"></div>
+      <div class="ty-actions">
+        <a href="index.html"   class="btn btn-outline" data-i18n="btn_back_home">← Back to Home</a>
+        <a href="contact.html" class="btn btn-gold"    data-i18n="ty_contact">Contact Us</a>
+      </div>
+      <p class="ty-note" id="tyNote"></p>
+    </div>
+  </section>
+</div>
+
+<script src="js/config.js"></script>
+<script src="js/main.js"></script>
+<script src="js/i18n.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const type    = sessionStorage.getItem('ty_type')    || 'appointment';
+  const name    = sessionStorage.getItem('ty_name')    || '';
+  const detail  = sessionStorage.getItem('ty_detail')  || '';
+  const service = sessionStorage.getItem('ty_service') || '';
+
+  // Wait for i18n to initialise, then render
+  setTimeout(() => {
+    const lang = I18N.current;
+    const t    = (key) => I18N.t(key);
+    const box  = document.getElementById('tyDetailBox');
+
+    if (type === 'appointment') {
+      document.getElementById('tyIcon').textContent  = t('ty_appt_icon');
+      document.getElementById('tyTitle').textContent = t('ty_appt_title');
+      document.getElementById('tySub').textContent   = t('ty_appt_sub');
+      document.getElementById('tyNote').textContent  = t('ty_appt_note');
+      box.innerHTML = `
+        <div class="ty-detail-row"><span>${t('rvw_name')}</span><strong>${esc(name)}</strong></div>
+        <div class="ty-detail-row"><span>${t('rvw_service')}</span><strong>${esc(service)}</strong></div>
+        <div class="ty-detail-row"><span>${lang==='ar'?'الوقت المطلوب':'Requested Slot'}</span><strong>${esc(detail)}</strong></div>
+        <div class="ty-detail-row"><span>${t('rvw_status')}</span><strong style="color:var(--gold);">${t('ty_status_pending')}</strong></div>
+      `;
+    } else {
+      document.getElementById('tyIcon').textContent  = t('ty_course_icon');
+      document.getElementById('tyTitle').textContent = t('ty_course_title');
+      document.getElementById('tySub').textContent   = t('ty_course_sub');
+      document.getElementById('tyNote').textContent  = t('ty_course_note');
+      box.innerHTML = `
+        <div class="ty-detail-row"><span>${t('rvw_name')}</span><strong>${esc(name)}</strong></div>
+        <div class="ty-detail-row"><span>${lang==='ar'?'الدورة':'Course'}</span><strong>${esc(detail)}</strong></div>
+        <div class="ty-detail-row"><span>${t('rvw_status')}</span><strong style="color:var(--gold);">${t('ty_status_payment')}</strong></div>
+      `;
+    }
+
+    // Clear session storage
+    ['ty_type','ty_name','ty_detail','ty_service'].forEach(k => sessionStorage.removeItem(k));
+  }, 80);
+});
+
+function esc(s) {
+  if (!s) return '—';
+  return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+}
+</script>
+</body>
+</html>
